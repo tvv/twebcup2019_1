@@ -1,0 +1,59 @@
+.header {
+  position: fixed;
+  top: 0px;
+  display: block;
+  width: 100%;
+  height: 60px;
+
+  border-bottom: 1px solid black;
+  background-color: white;
+  z-index: 100;
+
+  &__container {
+    padding: 10px;
+    max-width: 1420px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: auto 150px;      
+  }
+
+  &__dropzone {
+    background-image: url(/static/i/upload.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    overflow: hidden;
+    height: 40px;
+
+    &-uploading {
+      background: none;
+    }
+
+    &__file {
+      display: inline-block;
+      margin: 2px;
+      width: 100%;
+
+      &__name {     
+        width: 100%;
+        padding: 0px 10px;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+
+  &__userinfo {
+    text-align: right;
+
+    &__name {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}

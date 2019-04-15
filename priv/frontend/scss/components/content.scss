@@ -1,0 +1,128 @@
+.content {
+  display: block;
+  height: 100%;
+  max-width: 1420px;
+
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.login {
+  margin: 0px auto;
+
+  @media (max-width: 575px) {
+    width: 90%;
+  }
+
+  @media (min-width: 576px) {
+    width: 500px;
+  }
+
+  @media (max-height: 299px) {
+    width: 90%;
+    padding-top: 10px;
+  }
+
+  @media (min-height: 300px) {
+    width: 90%;
+    padding-top: 50px;
+  }
+
+  @media (min-height: 600px) {
+    width: 500px;
+    padding-top: 100px;
+  }
+
+  &__yandex {
+    max-width: 200px;
+    padding: 20px 0px 0px 0px;
+    margin: 0px auto;
+
+    & img {
+      cursor: pointer;
+    }
+  }
+}
+
+.messages {
+  display: block;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
+  grid-gap: 5px;
+  
+  &__image {
+    cursor: pointer;
+  }
+}
+
+.more_images {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin: 10px 0px;
+  padding: 5px 0px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.modal_image {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 150;
+
+    & img { 
+      position: block;   
+      cursor: pointer;
+      max-width: 90%;
+      max-height: 90%;
+    }
+  }  
+
+  &__actions {
+    width: 80%;
+    font-size: 30px;
+    margin: 0px auto;
+    color: white;
+  }
+
+  &__left {
+    float: left;
+    cursor: pointer;
+  }
+
+  &__right {
+    float: right;
+    cursor: pointer;
+  }
+
+  &:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+  &__bg {
+    position: absolute;    
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: .7;
+  }
+}

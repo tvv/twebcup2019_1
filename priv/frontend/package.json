@@ -1,0 +1,53 @@
+{
+  "name": "stok_ru",
+  "version": "2.0.0",
+  "description": "",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "@babel/preset-env": "^7.4.3",
+    "elm": "^0.19.0",
+    "elm-webpack-loader": "^5.0.0",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.1.2",
+    "event-stream": "^4.0.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cli": "2.0.1",
+    "gulp-concat": "2.6.1",
+    "gulp-cssmin": "0.2.0",
+    "gulp-minify": "3.1.0",
+    "gulp-plumber": "1.2.0",
+    "gulp-rename": "1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "4.0.1",
+    "gulp-sourcemaps": "2.6.4",
+    "gulp-util": "3.0.8",
+    "gulp-watch": "5.0.1",
+    "merge-stream": "1.0.1",
+    "merge2": "1.2.2",
+    "normalize-scss": "7.0.1",
+    "run-sequence": "2.2.1",
+    "vinyl-buffer": "1.0.1",
+    "webpack": "^4.26.1",
+    "webpack-stream": "^5.1.1"
+  },
+  "scripts": {
+    "build": "yarn run gulp build",
+    "watch": "yarn run gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.relabs.ru/tvv/twebcup2019_1round.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "",
+  "browserslist": [
+    "> 1%, not dead",
+    "last 2 versions"
+  ]
+}

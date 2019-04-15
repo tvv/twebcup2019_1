@@ -1,0 +1,23 @@
+{application, wa,
+ [
+  {description, "Round 1 at Tula Web Cup 2019"},
+  {vsn, "0.0.1"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    inets,
+    sasl,
+    asn1,
+    ssl,
+    public_key,
+    crypto,
+    cowboy,
+    gun,
+    pooler
+    ]},
+  {included_applications, []},
+  {mod, { wa_app, []}},
+  {env, []}
+ ]}.

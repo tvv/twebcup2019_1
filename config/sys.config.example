@@ -1,0 +1,115 @@
+%% -*- coding: utf-8 -*-
+[ 
+  {kernel, [
+    {logger, [
+      {handler, default, logger_std_h,
+        #{level => debug,
+          formatter => {logger_formatter, #{template => [time, " [", level, "] ", file, ":", line, " ", msg, "\n"]}}
+        }
+      },
+      {handler, info, logger_disk_log_h,
+        #{level => info,
+          formatter => {logger_formatter, #{template => [time, " [", level, "] ", file, ":", line, " ", msg, "\n"]}},
+          config => #{file => "log/stok_wa.log"}
+        }
+      }
+    ]}
+  ]},
+
+  {sync, [{growl, none}]},
+
+  {pooler,
+    [{pools,
+      [
+        [
+          {name,pgdb},
+          {max_count, 8},
+          {init_count, 2},
+          {start_mfa,
+            {db_pg, start_link,
+              [#{
+                host => "localhost",
+                username => <<"">>,
+                password => <<"">>,
+                database => <<"">>,
+                port => 5432,
+                codecs => [{db_pg_codecs, []}]
+              }]
+            }
+          }
+        ],
+        [
+          {name, cache},
+          {max_count, 8},
+          {init_count, 2},
+          {start_mfa, 
+            {db_redis, start_link, [#{ host => "127.0.0.1" }]}
+          }
+        ],
+        [
+          {name,session},
+          {max_count, 8},
+          {init_count, 2},
+          {start_mfa,
+            {db_redis, start_link, [#{host => "127.0.0.1"}]}
+          }
+        ],
+        [
+          {name, globals},
+          {max_count, 2},
+          {init_count, 1},
+          {start_mfa,
+            {db_redis, start_link, [#{host => "127.0.0.1"}]}
+          }
+        ]
+      ]}
+    ]
+  },
+
+  {wa, [
+    {listen_port, 8080},
+    {env, local},
+    {host, <<"hppt://localhost">>},
+
+    %
+    % on start
+    %
+    
+    {modules, [
+
+      % external
+      {mail, #{
+        domain => "stok.relabs.ru",
+        from => <<"noreply@stok.relabs.ru">>,
+        method => smtp,
+        options => #{ relay => "localhost" },
+        templates => [
+          "register",
+          "reset",
+          "restore",
+          "moderate_rejected",
+          "new_payment",
+          "payed_service_apply",
+          "payed_service_expire",
+          "ann_expire"
+        ]
+      }}
+    ]},
+
+    %
+    % security
+    %
+
+    {salts, #{
+      phone => <<"0Ndxl7shJxLU5K9IHF7DjQ3PQI4C6tYd5BvAzUUVtpSrFMnJ4t2rPO01Oh9z69K">>,
+      pwd => <<"7UGD7pGRoIiaUeiM5q8gdznmL0z76sSVvSPKRE8ek1k7oaw2VNr7phafDg5dQRNr">>
+    }},
+    {socials, #{
+      yandex => #{
+        id     => <<>>,
+        secret => <<>>
+      }
+    }},
+    {can_reset_db, true}
+  ]}
+].
