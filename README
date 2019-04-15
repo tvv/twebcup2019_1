@@ -1,0 +1,38 @@
+Зависимости
+================
+
+# postgresql >11
+# erlang > 21
+# redis
+# make tools
+# develepment tools (build-essential)
+
+
+Зупуск
+================
+
+Пример конфигурации проекта `config/sys.config.example`.
+
+`make run`
+
+База данных
+================
+
+После успешного запуска проекта инициировать базу данных запросами из файла `priv/db/struct/0000_create_db.sql`.
+Выполнить миграцию:
+
+`
+l(db).
+db:migrate()
+`
+
+Сборка frontend
+================
+
+`
+cd priv/frontend
+npm i
+npm run build
+`
+
+Папка статической части сайта - `priv/static`
